@@ -1,7 +1,7 @@
 # Spotify Genres Sorter
 Spotify Genres Sorter is an helper, completely written in Python, to sort out large playlists that contain (too) many genres of music! It will create many playlists containing all the songs from a main playlists divided by their genres.
 
-## Set up and usage
+## Setup and usage
 Spotify Genres Sorter configuration is pretty easy since it is completely guided during its use. 
 
 Prior to running it, though, it is necessary to download the required dependencies by running the following command:
