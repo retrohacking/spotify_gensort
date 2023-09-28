@@ -1,1 +1,5 @@
 .venv
+tokens.json
+activate.bat
+.cache*
+__pycache__
