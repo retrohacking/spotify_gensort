@@ -7,3 +7,10 @@ def check_tokens():
 def authorization():
     username, client_id, client_secret = read_tokens()
     return generate_user_token(username, client_id, client_secret)
+
+def load_gensort():
+    check_tokens()
+    return authorization()
+
+def run_gensort(token):
+    pass

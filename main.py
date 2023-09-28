@@ -1,9 +1,8 @@
-from gensort import check_tokens, authorization
+from gensort import load_gensort, run_gensort
 
 def main():
-    check_tokens()
-    token=authorization()
-    
+    token=load_gensort()
+    run_gensort(token)
 
 if __name__=="__main__":
     main()
