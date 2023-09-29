@@ -1,5 +1,6 @@
 from . import *
 from utils.file_manager import create_json, check_json, load_json
+from utils.input_manager import check_yesno
 from os import system
 from webbrowser import open
 
@@ -12,7 +13,7 @@ def have_tokens():
 
 def configure_tokens():
     tokens={}
-    own_credentials=input("Do you already own the CLIENT ID and the CLIENT SECRET? (Y/N) ")
+    own_credentials=check_yesno(input("Do you already own the CLIENT ID and the CLIENT SECRET? (Y/N) "))
     if not own_credentials:
         print("This process will guide you through the configuration of your tokens.")
         system("pause")
@@ -26,7 +27,7 @@ def configure_tokens():
             "\tApp name: Genres Sorter\n"+
             "\tApp description: Sort out your messy playlists!\n"+
             "\tWebsite: https://github.com/retrohacking/spotify_gensort \n"+
-            "\tRedirect URIs: http://localhost/\n"+
+            "\tRedirect URIs: "+REDIRECT+"\n"
             "If the program does not automatically redirect you to the page, navigate to:\n"+
             CREATE_APP_PAGE)
         open(CREATE_APP_PAGE, new=0)
