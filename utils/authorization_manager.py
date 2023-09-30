@@ -6,12 +6,11 @@ from os import system
 from webbrowser import open
 import glob
 
-
 LOGIN_PAGE="https://accounts.spotify.com/it/login"
 CREATE_APP_PAGE="https://developer.spotify.com/dashboard/create"
 
-def get_client_manager(client_id, client_secret):
-    return SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
+def get_client_manager(client_tokens):
+    return SpotifyClientCredentials(client_id=client_tokens["client_id"], client_secret=client_tokens["client_secret"])
 
 def have_tokens():
     exists_tokens_file=check_json(TOKENS_FILE)
@@ -22,7 +21,6 @@ def have_tokens():
     else:
         return False
     return True
-
 
 def configure_tokens():
     while True:

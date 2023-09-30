@@ -12,7 +12,7 @@ def authorization(client_tokens):
 def load_gensort():
     client_tokens=retrieve_tokens()
     user_token=authorization(client_tokens)
-    return client_tokens, user_token
+    return get_client_manager(client_tokens), user_token
     
 def run_gensort(client_manager, token):
     pass
