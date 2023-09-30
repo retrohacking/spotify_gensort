@@ -9,7 +9,7 @@ Prior to running it, though, it is necessary to download the required dependenci
 
 The main library on which Spotify Genres Sorter is based is [Spotipy](https://github.com/spotipy-dev/spotipy). It is important to notice that during the first execution of the tool it will be required the generation of user and client tokens. As already said the program will guide you through the generation of these tokens.
 
-__In the case in which you already have the CLIENT_ID and CLIENT_SECRET, be careful to set as REDIRECT URIs the value "http://localhost/", else the generation of the token may fail.__
+__In the case in which you already have the CLIENT_ID and CLIENT_SECRET, be careful to set as REDIRECT URIs the value "http://localhost:1337", else the generation of the token may fail.__
 
 Once the requirements are installed you are ready to run the tool!
 >python3 main.py
