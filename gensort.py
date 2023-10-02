@@ -1,4 +1,5 @@
 from utils.authorization_manager import have_tokens,configure_tokens, read_tokens, generate_user_token, get_client_manager
+from utils.spotipy_functionalities import get_spotify
 
 def retrieve_tokens():
     if not have_tokens():
@@ -14,5 +15,7 @@ def load_gensort():
     user_token=authorization(client_tokens)
     return get_client_manager(client_tokens), user_token
     
-def run_gensort(client_manager, token):
-    pass
+def run_gensort(client, token):
+    spotify=get_spotify(token, client)
+    playlists=spotify.current_user_playlists()
+    print (playlists)
