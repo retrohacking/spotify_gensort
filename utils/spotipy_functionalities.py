@@ -14,7 +14,27 @@ def get_playlists(spotify):
 def choose_playlist(playlists):
     return int_input("Choose the playlist to sort out\n> ", len(playlists))
 
+def collect_tracks(spotify,playlist):
+    tracks_raw = playlist['items']
+    tracks={}
+
+    while playlist['next']:
+        playlist = spotify.next(playlist)
+        tracks_raw.extend(playlist['items'])
+
+    # FOR DEBUG PURPOSE    
+    for track in tracks_raw:
+        tracks[track["track"]["id"]]=track["track"]["artists"][0]["name"]
+        print(f'{i} - {track["track"]["id"]} : {track["track"]["artists"][0]["name"]}')
+        i+=1
+    # END
+    #IN REALITY WE WILL NEED THE ID OF THE SONG and its (first) genre - https://community.spotify.com/t5/Spotify-for-Developers/retrieving-genre-of-track-in-metadata/td-p/5495626
+
+    return tracks
+
 def pre_sort(spotify, playlist_name, playlist_id):
     playlist_tracks=spotify.playlist_tracks(playlist_id, limit=LIMIT_PLAYLIST_TRACK)
-    for track in playlist_tracks["items"]:
-        print(f'{track["track"]["name"]}')
+    tracks_details=collect_tracks(spotify, playlist_tracks)
+    print(f"\n{len(tracks_details.keys())} elements collected.\n")
+
+

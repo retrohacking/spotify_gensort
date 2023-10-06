@@ -19,5 +19,3 @@ def print_playlists(playlists):
     for i in range(len(playlists)):
         print(f"[{i}] - {playlists[i]}")
     print()
-
-

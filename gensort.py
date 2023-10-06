@@ -23,6 +23,5 @@ def run_gensort(client, token):
     playlists_name=list(playlists.keys())
     print_playlists(playlists_name)
     target_playlist=choose_playlist(playlists_name)
-    pre_sort(spotify, playlists_name[target_playlist], playlists[playlists_name[target_playlist]])
-    
+    pre_sort(spotify, playlists[playlists_name[target_playlist]])  
     
