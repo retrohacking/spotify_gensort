@@ -22,7 +22,7 @@ def print_playlists_name(playlists):
 
 def print_sorted_playlists(playlists):
     i=0
-    for playlist in sorted(playlists, key=lambda playlist: len(playlists[playlist]), reverse=True):
+    for playlist in playlists:
         if playlist in DEFAULT_GENRES:
             print(f"[{i}] DEFAULT - {playlist} - {len(playlists[playlist])} song")
         else:

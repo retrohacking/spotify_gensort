@@ -26,7 +26,6 @@ def run_gensort(client, token):
     tracks_details=pre_sort(spotify, playlists[playlists_name[target_playlist]])  
     sorted_playlists=playlist_sorting(tracks_details)
     print_sorted_playlists(sorted_playlists)
-    
     #get the choice of the playlists (parser) -> gensort_functionalities -> input_manager
     #create the playlists -> gensort_functionalities and get the IDs
 

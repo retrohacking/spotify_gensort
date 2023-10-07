@@ -43,6 +43,13 @@ def playlist_exists(playlist, genre):
     else:
         return True
 
+def order_playlists_by_songs(playlists):
+    ordered_playlist={}
+    ordered_generes=sorted(playlists, key=lambda playlist: len(playlists[playlist]), reverse=True)
+    for genre in ordered_generes:
+        ordered_playlist[genre]=playlists[genre]
+    return ordered_playlist
+    
 def playlist_sorting(tracks):
     new_playlists={}
     for id in tracks.keys():
@@ -58,4 +65,5 @@ def playlist_sorting(tracks):
                         new_playlists[default_genre].append(id)
             if id not in new_playlists[genre]:
                 new_playlists[genre].append(id)
+    new_playlists=order_playlists_by_songs(new_playlists)
     return new_playlists
