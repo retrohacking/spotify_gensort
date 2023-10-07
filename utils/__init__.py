@@ -10,3 +10,4 @@ YEAR=localtime()[0]
 GITHUB="https://github.com/retrohacking"
 
 LIMIT_PLAYLIST_TRACK=100
+DEFAULT_GENRES=["rock", "metal", "funk", "punk", "trap", "hip hop", "rap", "pop", "r&b", "reggae", "soul"]
