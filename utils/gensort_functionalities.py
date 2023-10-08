@@ -83,8 +83,16 @@ def gensort_playlists(chosen, playlists, user_playlists, spotify):
         final_playlist_name=f"{PLAYLISTS_PREFIX}{sorted_playlists_name}"
         if final_playlist_name in list(user_playlists.keys()):
             final_playlist_id=user_playlists[final_playlist_name]
-            spotify.playlist_add_items(final_playlist_id, playlists[sorted_playlists_name])
+            i=0
+            for song in playlists[sorted_playlists_name]:
+                spotify.playlist_add_items(final_playlist_id, [song])
+                print(f'\rLoading{"."*((i%3)+1)}{" "*(3-(i%3)+1)}', end='')
+                i+=1
         else:
             new_playlist_id=spotify.user_playlist_create(username, final_playlist_name, public=False, collaborative=False, description=PLAYLISTS_DESCRIPTION)["id"]
-            spotify.playlist_add_items(new_playlist_id, playlists[sorted_playlists_name])
-        print(f"{len(playlists[sorted_playlists_name])} songs have been added to {final_playlist_name}")
+            i=0
+            for song in playlists[sorted_playlists_name]:
+                spotify.playlist_add_items(new_playlist_id, [song])
+                print(f'\rLoading{"."*((i%3)+1)}{" "*(3-(i%3)+1)}', end='')
+                i+=1    
+        print(f"\r{len(playlists[sorted_playlists_name])} songs have been added to {final_playlist_name}")
