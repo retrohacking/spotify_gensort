@@ -1,5 +1,5 @@
 from . import *
-from utils.input_manager import int_input
+from utils.input_manager import int_input, playlist_choice_parser
 
 def get_spotify(user_token, client_manager):
     return spotipy.Spotify(auth=user_token)
@@ -67,3 +67,6 @@ def playlist_sorting(tracks):
                 new_playlists[genre].append(id)
     new_playlists=order_playlists_by_songs(new_playlists)
     return new_playlists
+
+def prompt_for_playlists(max_value):
+    return playlist_choice_parser(max_value)
