@@ -1,6 +1,6 @@
 from utils.authorization_manager import have_tokens,configure_tokens, read_tokens, generate_user_token, get_client_manager
-from utils.gensort_functionalities import get_spotify, get_playlists, choose_playlist, pre_sort, playlist_sorting, prompt_for_playlists
-from utils.window_manager import print_banner, print_playlists_name, print_sorted_playlists, print_parser_rules, print_chosen_playlists
+from utils.gensort_functionalities import get_spotify, get_playlists, choose_playlist, pre_sort, playlist_sorting, prompt_for_playlists, gensort_playlists
+from utils.window_manager import print_banner, print_playlists_name, print_sorted_playlists, print_parser_rules, print_chosen_playlists, print_final
 
 def retrieve_tokens():
     if not have_tokens():
@@ -29,4 +29,5 @@ def run_gensort(client, token):
     print_parser_rules()
     chosen_playlists=prompt_for_playlists(len(sorted_playlists.keys()))
     print_chosen_playlists(chosen_playlists, sorted_playlists)
-    #create the playlists -> gensort_functionalities and get the IDs    
+    gensort_playlists(chosen_playlists, sorted_playlists, playlists, spotify)
+    print_final()

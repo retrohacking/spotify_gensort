@@ -45,3 +45,8 @@ def print_chosen_playlists(chosen, playlists):
     print("\nYou have chosen the following playlists:")
     for p in chosen:
         print(playlists_name[p])
+
+def print_final():
+    print("\nCheck the playlists on your Spotify, and if you like them Star the project, or open a issue for any problem!")
+    print(f"GITHUB - {GITHUB}/spotify_gensort")
+    print("\n\tSEE YOU SOON!")

@@ -20,7 +20,7 @@ If the inserted tokens are correct the program will print automatically all the 
 The program will print a prospect of the many playlists that can be created on the user's account. But it is not necessary to create __ALL__ the generated playlists. You will have to insert the indexes of the playlists you actually want to generate.
 
 ### Playlists index parser
-The generated playlists can be so much, but the program provides you a parser to easily include intervals instead of manually inserting all their indexes. Here it is:
+The generated playlists can be so many, but the program provides you a parser to easily include intervals instead of manually inserting all their indexes. Here it is:
 
 - All the playlists or intervals have to be separated by a comma (,)
 - The user can insert a single index for a playlist
@@ -29,4 +29,11 @@ The generated playlists can be so much, but the program provides you a parser to
 -The user can also select to create all the playlists with a dot (.)
 
 __And Gensort also sorts the playlists by the number of their songs!__ <sub>(guess you wouldn't like to listen to a playlist with only 2 songs, right? :wink:)</sub>
+
+---
+Now Gensort will work by itself, generating the chosen playlists!
+
+Check them on your Spotify account and if you like them Star this project and feel free to open an issue or a pull request for any problem or enhancement!
+
+\-Retro
 

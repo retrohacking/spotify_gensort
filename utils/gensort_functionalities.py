@@ -1,5 +1,6 @@
 from . import *
-from utils.input_manager import int_input, playlist_choice_parser
+from utils.file_manager import load_json
+from utils.input_manager import int_input, playlist_choice_parser, check_yesno
 
 def get_spotify(user_token, client_manager):
     return spotipy.Spotify(auth=user_token)
@@ -70,3 +71,20 @@ def playlist_sorting(tracks):
 
 def prompt_for_playlists(max_value):
     return playlist_choice_parser(max_value)
+
+def gensort_playlists(chosen, playlists, user_playlists, spotify):
+    confirm=check_yesno(input("Confirm? (Y/N)\t"))
+    current_user = spotify.current_user()
+    username = current_user['uri'].split(":")[2]
+    if not confirm:
+        exit("SEE YOU NEXT TIME!\n")
+    for i in chosen:
+        sorted_playlists_name=list(playlists.keys())[i]
+        final_playlist_name=f"{PLAYLISTS_PREFIX}{sorted_playlists_name}"
+        if final_playlist_name in list(user_playlists.keys()):
+            final_playlist_id=user_playlists[final_playlist_name]
+            spotify.playlist_add_items(final_playlist_id, playlists[sorted_playlists_name])
+        else:
+            new_playlist_id=spotify.user_playlist_create(username, final_playlist_name, public=False, collaborative=False, description=PLAYLISTS_DESCRIPTION)["id"]
+            spotify.playlist_add_items(new_playlist_id, playlists[sorted_playlists_name])
+        print(f"{len(playlists[sorted_playlists_name])} songs have been added to {final_playlist_name}")
