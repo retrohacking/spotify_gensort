@@ -29,6 +29,8 @@ def collect_tracks(spotify,playlist):
         artist=spotify.artist(sp_track["artists"][0]["id"])
         tracks[track["track"]["id"]]=artist["genres"]
         print(f'\rLoading{"."*((i%3)+1)}{" "*(3-(i%3)+1)}', end='')
+        if (i%RATE_LIMIT==0):
+            sleep(3.0)
         i+=1
     return tracks
 
@@ -87,6 +89,8 @@ def gensort_playlists(chosen, playlists, user_playlists, spotify):
             for song in playlists[sorted_playlists_name]:
                 spotify.playlist_add_items(final_playlist_id, [song])
                 print(f'\rLoading{"."*((i%3)+1)}{" "*(3-(i%3)+1)}', end='')
+                if (i%RATE_LIMIT==0):
+                    sleep(3.0)
                 i+=1
         else:
             new_playlist_id=spotify.user_playlist_create(username, final_playlist_name, public=False, collaborative=False, description=PLAYLISTS_DESCRIPTION)["id"]
@@ -94,5 +98,7 @@ def gensort_playlists(chosen, playlists, user_playlists, spotify):
             for song in playlists[sorted_playlists_name]:
                 spotify.playlist_add_items(new_playlist_id, [song])
                 print(f'\rLoading{"."*((i%3)+1)}{" "*(3-(i%3)+1)}', end='')
+                if (i%RATE_LIMIT==0):
+                    sleep(3.0)
                 i+=1    
         print(f"\r{len(playlists[sorted_playlists_name])} songs have been added to {final_playlist_name}")
